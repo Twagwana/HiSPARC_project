@@ -1,12 +1,7 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
-
 
 The HiSPARC_manual
 
-get_ipython().set_next_input(u'WHY SAPPHIRE');get_ipython().magic(u'pinfo SAPPHIRE')
+WHY SAPPHIRE?
 Because it simplifies data access, simulations and analysis for the HiSPARC experiment.
 
 In this tutorial, we’ll try to give you a feeling for the things you can do with SAPPHiRE.
@@ -14,7 +9,7 @@ In this tutorial, we’ll try to give you a feeling for the things you can do wi
 How can you download data? 
 How can you analyze this data? 
 How can you produce pulseheight histograms? 
-get_ipython().set_next_input(u'How can you calculate the direction of cosmic rays');get_ipython().magic(u'pinfo rays')
+get_ipython().
 
 
 # In[1]:
@@ -183,12 +178,6 @@ print(data.root.s40001.weather)
 
 print(data.get_node('/s40001/weather'))
 
-
-
-
-
-
-
 # In[12]:
 
 
@@ -223,10 +212,6 @@ data.root.s40001.events
 # For some fields there are four values, one for each detector. 
 # If a station only has two detectors, the values for the missing detectors are -1.
 # If the baseline of the trace could not be determined all these valies are -999.
-
-
-
-
 
 # In[14]:
 
@@ -280,8 +265,6 @@ events[0]['pulseheights']
 
 events.col('pulseheights')
 
-
-
 # In[18]:
 
 
@@ -303,14 +286,6 @@ len(sel_events)
 
 
 sel_events['pulseheights']
-
-
-
-# In[ ]:
-
-
-
-
 
 # In[20]:
 
@@ -334,10 +309,6 @@ sel_events['pulseheights']
 
 
 
-
-
-
-
 # It It is easy, however, to screw up and inadvertently convert to local time. 
 # For your benefit, we have included the sapphire.time_util.GPSTime class. 
 # You instantiate the class by giving it a GPS time to work with. It can either be in date/time notation, or as a timestamp.
@@ -354,10 +325,6 @@ sapphire.time_util.GPSTime(1354320000)
 
 
 
-
-
-
-
 # In[21]:
 
 
@@ -369,12 +336,10 @@ gpstime.datetime()
 # In[22]:
 
 
-
 gpstime.description()
 
 
 # In[23]:
-
 
 
 gpstime.gpstimestamp()
@@ -401,13 +366,6 @@ gpstime.description()
 
 gpstime.gpstimestamp()
 
-
-# In[ ]:
-
-
-
-
-
 # In[27]:
 
 
@@ -420,16 +378,8 @@ t0, t1
 
 # In[28]:
 
-
-
 sel_events = events.read_where('(t0 <= timestamp) & (timestamp < t1)')
 len(sel_events)
-
-
-# In[ ]:
-
-
-
 
 
 # In[29]:
@@ -446,13 +396,6 @@ len(sel_events)
 
 ph = events.col('pulseheights')
 hist(ph)
-
-
-# In[ ]:
-
-
-
-
 
 # In[30]:
 
@@ -480,16 +423,7 @@ title("Pulseheight histogram (log scale)")
 # Finally, we add some labels and titles. 
 
 
-# In[ ]:
-
-
 # In the plot above, the gamma and charged particle part of the spectrum are easy to distinguish.
-
-
-# In[ ]:
-
-
-
 
 
 # In[31]:
@@ -519,7 +453,6 @@ if __name__ == '__main__':
     for station, group in zip(STATIONS, station_groups):
         download_data(data, group, station, START, END)        
         
-
 
 
 # In[32]:
@@ -554,8 +487,6 @@ coincidences = CoincidencesESD(data, '/coincidences', station_groups, 'w')
 coincidences.search_and_store_coincidences(station_numbers=STATIONS)
 
 
-
-
 # In[35]:
 
 
@@ -565,8 +496,6 @@ coincidences.search_and_store_coincidences(station_numbers=STATIONS)
 
 print(data)
     
-
-
 # In[36]:
 
 
@@ -609,8 +538,6 @@ print(data)
 data.root.coincidences.coincidences[1]
 
 
-
-
 # In[37]:
 
 
@@ -647,15 +574,6 @@ data.root.coincidences.s_index[0]
 
 data.get_node('/s40001', 'events')[1]
 
-
-
-
-# In[ ]:
-
-
-
-
-
 # In[41]:
 
 
@@ -674,16 +592,11 @@ data.get_node('/s40001', 'events')[1]
 # It can be a subset of stations by listing those stations (upto 30 stations), or a cluster of stations by giving the name of the cluster.
 
 
-
 # First, we import the following packages:
 
 import datetime
 import tables
 from sapphire import esd
-
-
-
-
 
 
 # In[42]:
@@ -693,8 +606,6 @@ from sapphire import esd
 
 start = datetime.datetime(2020, 7, 24)
 end = datetime.datetime(2020, 7, 26)
-
-
 
 # In[43]:
 
